@@ -1,0 +1,15 @@
+﻿<Window x:Class="Leitner_System.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Leitner_System" xmlns:viewmodel="clr-namespace:Leitner_System.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:LeitnerSystemViewModel}"
+        mc:Ignorable="d"
+        Title="Система Лейтнера" Height="450" Width="800" x:Name="mainWindow" Closing="mainWindow_Closing" Loaded="mainWindow_Loaded" GotFocus="mainWindow_GotFocus">
+
+
+    <Grid>
+        <!--<Frame x:Name="frame" Content="Frame" Navigated="frame_Navigated"/>-->
+        
+    </Grid>
+</Window>
