@@ -253,7 +253,7 @@
         <!--<Button x:Name="earlyFinish" Focusable="False" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Content="Завершить" Style="{DynamicResource GreyButton}" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}" Click="earlyFinish_Click"/>-->
         <Button x:Name="wrongAnswer" Focusable="False" Grid.Column="1" Grid.Row="3"  Content="Неверно" Style="{DynamicResource RedButton}" Click="wrongAnswer_Click" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}"/>
         <Button x:Name="deleteCard" Focusable="False" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Style="{DynamicResource LightGreyButton}" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}" Click="deleteCard_Click">
-            <Image Source="DeleteSprite.png"/>
+            <Image x:Name="deleteImage"/>
         </Button>
         <TextBlock x:Name="resultLabel" Focusable="False" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Text="{Binding CardsAnswered}"/>
         <local:CardPresentationAndEditingElement Focusable="False" x:Name="cardPresentationAndEditingElement" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3"/>

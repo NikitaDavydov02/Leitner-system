@@ -203,19 +203,10 @@
     <Resource Include="IMG_20210827_145450.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\FolderSprite.png" />
+    <Resource Include="Assets\PlusSprite.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\FolderSprite2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="View\PlusSprite.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="View\DeleteSprite.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="View\SaveSprite.png" />
+    <Resource Include="Assets\SaveSprite.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -230,15 +221,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\DontSaveSprite.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Home.png" />
     <Resource Include="Settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\Home.png" />
-    <Resource Include="View\Settings.png" />
+    <Resource Include="Assets\Settings.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="View\Icon.png" />
@@ -246,8 +233,21 @@
   <ItemGroup>
     <Resource Include="Icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <Resource Include="Assets\DeleteSprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\DontSaveSprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\FolderSprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\FolderSprite2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Home.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -65,7 +65,7 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="homeButton" MaxWidth="50" Grid.Column="0" Style="{DynamicResource GreyButton}" Width="Auto" Height="Auto" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15" Click="homeButton_Click">
-            <Image Source="Home.png"/>
+            <Image x:Name="homeImage"/>
         </Button>
         <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="15" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
@@ -142,10 +142,10 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Button x:Name="newCardButton" Grid.Column="0" MaxWidth="50" MaxHeight="50" HorizontalAlignment="Right" Margin="5" Click="newCardButton_Click" >
-                    <Image Source="PlusSprite.png"/>
+                    <Image x:Name="newImage"/>
                 </Button>
                 <Button x:Name="deleteCardButton" Grid.Column="1" MaxWidth="50" MaxHeight="50" HorizontalAlignment="Left" Margin="5" Click="deleteCardButton_Click">
-                    <Image Source="DeleteSprite.png"/>
+                    <Image x:Name="deleteImage"/>
                 </Button>
             </Grid>
         </StackPanel>

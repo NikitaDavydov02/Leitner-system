@@ -256,10 +256,10 @@
         </Grid.ColumnDefinitions>
         <StackPanel Focusable="False" Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="2" Background="Transparent" GotFocus="StackPanel_GotFocus"/>
         <Button x:Name="saveCardButton" Focusable="False" Grid.Column="0" Style="{DynamicResource GreyButton}" Click="saveCardButton_Click">
-                <Image Source="SaveSprite.png"/>
+            <Image  x:Name="saveButtonImage"/>
             </Button>
         <Button x:Name="donSaveCardButton" Focusable="False" Grid.Column="1" Style="{DynamicResource GreyButton}" Click="donSaveCardButton_Click">
-            <Image Source="DontSaveSprite.png"/>
+            <Image  x:Name="dontSaveButtonImage"/>
         </Button>
         <Button x:Name="chooseQuestionImage" Focusable="False" Grid.Column="0" Grid.Row="1" Margin="10" Content="Изображение-вопрос" Click="chooseQuestionImage_Click" Style="{DynamicResource GreenButton}"/>
         <Button x:Name="chooseAnswerImage" Focusable="False" Grid.Column="1" Grid.Row="1" Margin="10" Content="Изображение-ответ" Click="chooseAnswerImage_Click" Style="{DynamicResource GreenButton}"/>

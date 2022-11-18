@@ -28,6 +28,22 @@ namespace Leitner_System.View
         private LeitnerSystemViewModel viewModel;
         private bool cardsInDeckIsActive = false;
         private bool deckListIsActive = false;
+        //Light Images
+        private BitmapImage deleteImage;
+        private BitmapImage dontSaveImage;
+        private BitmapImage folderImage;
+        private BitmapImage plusImage;
+        private BitmapImage settingsImage;
+        private BitmapImage saveImage;
+        private BitmapImage homeImage;
+        //Light Images
+        private BitmapImage deleteImageDark;
+        private BitmapImage dontSaveImageDark;
+        private BitmapImage folderImageDark;
+        private BitmapImage plusImageDark;
+        private BitmapImage settingsImageDark;
+        private BitmapImage saveImageDark;
+        private BitmapImage homeImageDark;
         public StartPage()
         {
             InitializeComponent();
@@ -35,6 +51,29 @@ namespace Leitner_System.View
             DataContext = viewModel;
             viewModel.PropertyChanged += CurrentCardChanged;
             cardScrollViewer.HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Disabled;
+            //Images inicialization
+            deleteImage = new BitmapImage(new Uri("..\\Assets\\DeleteSprite.png", UriKind.Relative));
+            dontSaveImage = new BitmapImage(new Uri("..\\Assets\\DontSaveSprite.png", UriKind.Relative));
+            folderImage = new BitmapImage(new Uri("..\\Assets\\FolderSprite.png", UriKind.Relative));
+            plusImage = new BitmapImage(new Uri("..\\Assets\\PlusSprite.png", UriKind.Relative));
+            settingsImage = new BitmapImage(new Uri("..\\Assets\\SettingsSprite.png", UriKind.Relative));
+            saveImage = new BitmapImage(new Uri("..\\Assets\\SaveSprite.png", UriKind.Relative));
+            homeImage = new BitmapImage(new Uri("..\\Assets\\HomeSprite.png", UriKind.Relative));
+            ////Dark images inicialization
+            deleteImageDark = new BitmapImage(new Uri("..\\Assets\\DeleteSpriteDark.png", UriKind.Relative));
+            dontSaveImageDark = new BitmapImage(new Uri("..\\Assets\\DontSaveSpriteDark.png", UriKind.Relative));
+            folderImageDark = new BitmapImage(new Uri("..\\Assets\\FolderSpriteDark.png", UriKind.Relative));
+            plusImageDark = new BitmapImage(new Uri("..\\Assets\\PlusSpriteDark.png", UriKind.Relative));
+            settingsImageDark = new BitmapImage(new Uri("..\\Assets\\SettingsSpriteDark.png", UriKind.Relative));
+            saveImageDark = new BitmapImage(new Uri("..\\Assets\\SaveSpriteDark.png", UriKind.Relative));
+            homeImageDark = new BitmapImage(new Uri("..\\Assets\\HomeSpriteDark.png", UriKind.Relative));
+            //ButtonsINicialization
+            deleteDeckButtonImage.Source = deleteImage;
+            chooseFolderButtonImage.Source = folderImage;
+            newDeckButtonImage.Source = plusImage;
+            settingsButtonImage.Source = settingsImage;
+            newCardButtonImage.Source = plusImage;
+            deleteCardButtonImage.Source = deleteImage;
         }
         private void CurrentCardChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -353,6 +392,26 @@ namespace Leitner_System.View
         private void chooseFolderButton_Click(object sender, RoutedEventArgs e)
         {
             viewModel.ChooseFolder();
+        }
+
+        private void settingsButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            settingsButtonImage.Source = settingsImageDark;
+        }
+
+        private void settingsButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            settingsButtonImage.Source = settingsImage;
+        }
+
+        private void chooseFolderButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            chooseFolderButtonImage.Source = folderImage;
+        }
+
+        private void chooseFolderButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            chooseFolderButtonImage.Source = folderImageDark;
         }
     }
     public class TrainingStartEventArgs:EventArgs
