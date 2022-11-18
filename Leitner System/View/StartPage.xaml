@@ -19,6 +19,127 @@
     </Page.CommandBindings>
 
     <Page.Resources>
+        <Style x:Key="WhiteButtonWithText" TargetType="{x:Type Button}">
+            <!--<Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>-->
+            <Setter Property="Background" Value="White"/>
+            <!--<Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>-->
+            <Setter Property="Foreground" Value="#FF52504E"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="15 0"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="25"/>
+            <!--<Setter Property="FontSize" Value="{DynamicResource ControlFontSize}"/>-->
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderThickness="1" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <Viewbox>
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Viewbox>
+                            <Border.CornerRadius>10</Border.CornerRadius>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <!--<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>-->
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <!--<Setter Property="Background" TargetName="border" Value="#FF7B8FA2"/>-->
+                                <Setter Property="Background" Value="#FF52504E"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="White" BlurRadius="20" ShadowDepth="0"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FF7B8FA2"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="#FFCDCDCD"/>
+                                <!--<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>-->
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="PurpleButtonWithText" TargetType="{x:Type Button}">
+            <!--<Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>-->
+            <Setter Property="Background" Value="#FFB400FF"/>
+            <!--<Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>-->
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="15 10"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="20"/>
+            <!--<Setter Property="FontSize" Value="{DynamicResource ControlFontSize}"/>-->
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderThickness="1" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <Viewbox>
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Viewbox>
+                            <Border.CornerRadius>10</Border.CornerRadius>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <!--<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>-->
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <!--<Setter Property="Background" TargetName="border" Value="#FF7B8FA2"/>-->
+                                <Setter Property="Background" Value="White"/>
+                                <Setter Property="Foreground" Value="#FF52504E"/>
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="White" BlurRadius="30" ShadowDepth="0"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <!--<Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform CenterX="0" CenterY="0" ScaleX="1.1" ScaleY="1.1" />
+                                    </Setter.Value>
+                                </Setter>-->
+                                <Setter Property="Margin" Value="15 8"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <!--<Setter Property="Background" TargetName="border" Value="#FF7B8FA2"/>-->
+                                <Setter Property="Background" Value="White"/>
+                                <Setter Property="Foreground" Value="#FF52504E"/>
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="White" BlurRadius="30" ShadowDepth="0"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <!--<Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform CenterX="0" CenterY="0" ScaleX="1.1" ScaleY="1.1" />
+                                    </Setter.Value>
+                                </Setter>-->
+                                <Setter Property="Margin" Value="15 10"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="#FFCDCDCD"/>
+                                <!--<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>-->
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -205,6 +326,7 @@
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
         <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
         <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        
         <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
             <Setter Property="Background" Value="#FFD5D5D3"/>
             <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
@@ -269,7 +391,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="0" Background="#FF52504E" Grid.RowSpan="5" Width="Auto"/>
         <Grid Grid.Row="0" Grid.Column="0">
-            <Button x:Name="settingsButton" HorizontalAlignment="Left" Margin="10" MaxWidth="50" Grid.Column="0" Style="{DynamicResource GreyButton}" Width="Auto" Height="Auto" Click="settingsButton_Click">
+            <Button x:Name="settingsButton" HorizontalAlignment="Left" Margin="10" MaxWidth="50" Grid.Column="0" Style="{DynamicResource WhiteButtonWithText}" Width="Auto" Height="Auto" Click="settingsButton_Click">
                 <Image Source="Settings.png"/>
             </Button>
         </Grid>
@@ -283,7 +405,7 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <!--SelectedIndex="{Binding ReverseSetting, Mode=TwoWay}"-->
-            <Button x:Name="SelectAll" Margin="15 2" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Content="Выбрать все" Click="SelectAll_Click" Style="{DynamicResource GreyButton}" IsEnabled="{Binding Decks.Count, Converter={StaticResource integerToVisibilityConverter}}"/>
+            <Button x:Name="SelectAll" Margin="15 2" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Content="Выбрать все" Click="SelectAll_Click" Style="{DynamicResource WhiteButtonWithText}" IsEnabled="{Binding Decks.Count, Converter={StaticResource integerToVisibilityConverter}}"/>
             <ComboBox x:Name="ReverseSetting" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="70" MinHeight="20" Width="20" Height="13" SelectionChanged="ReverseSetting_SelectionChanged" SelectedIndex="0">
                 <ComboBoxItem FontSize="12" Content="Прямо"/>
                 <ComboBoxItem FontSize="12" Content="Обратно"/>
@@ -293,8 +415,9 @@
 
         </Grid>
 
-        <ScrollViewer x:Name="deckScrollViewer" Grid.Column="0" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="15" LostFocus="deckScrollViewer_LostFocus" GotFocus="deckScrollViewer_GotFocus" PreviewMouseWheel="deckScrollViewer_PreviewMouseWheel">
-            <ListView x:Name="decksList" ItemsSource="{Binding Decks, Mode=OneWay}" SelectionChanged="decksList_SelectionChanged" Background="#FFD5D5D3" GotFocus="decksList_GotFocus" LostFocus="decksList_LostFocus">
+        <ScrollViewer x:Name="deckScrollViewer" Grid.Column="0" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="15" LostFocus="deckScrollViewer_LostFocus" GotFocus="deckScrollViewer_GotFocus" PreviewMouseWheel="deckScrollViewer_PreviewMouseWheel" Foreground="Black">
+            <ListView x:Name="decksList" ItemsSource="{Binding Decks, Mode=OneWay}" SelectionChanged="decksList_SelectionChanged" Background="White" GotFocus="decksList_GotFocus" LostFocus="decksList_LostFocus">
+                
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -340,17 +463,21 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="chooseFolderButton" Margin="10" Grid.Column="0" Style="{DynamicResource GreyButton}" Command="ApplicationCommands.Open">
+            <Button x:Name="chooseFolderButton" Margin="10" Grid.Column="0" Style="{DynamicResource WhiteButtonWithText}" Click="chooseFolderButton_Click">
                 <Image Source="FolderSprite2.png"/>
             </Button>
-            <Button x:Name="newDeckButton" Margin="10" Grid.Column="1" Style="{DynamicResource GreyButton}" Click="newDeckButton_Click">
+            <Button x:Name="newDeckButton" Margin="10" Grid.Column="1" Style="{DynamicResource WhiteButtonWithText}" Click="newDeckButton_Click">
                 <Image Source="PlusSprite.png"/>
             </Button>
-            <Button x:Name="deleteDeckButton" Margin="10" Grid.Column="2" Style="{DynamicResource GreyButton}" Click="deleteDeckButton_Click">
+            <Button x:Name="deleteDeckButton" Margin="10" Grid.Column="2" Style="{DynamicResource WhiteButtonWithText}" Click="deleteDeckButton_Click">
                 <Image Source="DeleteSprite.png"/>
             </Button>
         </Grid>
-        <Button x:Name="startTraining" Grid.Column="0" Grid.Row="4" Click="startTraining_Click" Content="Начать тренировку!" Style="{DynamicResource OrangeButton}"/>
+        <Button x:Name="startTraining" Grid.Column="0" Grid.Row="4" Click="startTraining_Click" Content="Начать тренировку!" Style="{DynamicResource PurpleButtonWithText}">
+            <!--<Button.Effect>
+                <DropShadowEffect Color="White" BlurRadius="20" ShadowDepth="0"/>
+            </Button.Effect>-->
+        </Button>
 
         <StackPanel Grid.Column="1" Grid.Row="0" Background="#FFFFFF" Grid.RowSpan="5" GotFocus="StackPanel_GotFocus"/>
         <Grid Grid.Column="1" Grid.Row="0">

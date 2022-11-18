@@ -349,6 +349,11 @@ namespace Leitner_System.View
             saveFileDialog.ShowDialog();
             viewModel.ExportCurrentDeckToExcelFile(saveFileDialog.FileName);
         }
+
+        private void chooseFolderButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.ChooseFolder();
+        }
     }
     public class TrainingStartEventArgs:EventArgs
     {
