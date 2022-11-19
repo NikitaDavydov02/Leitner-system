@@ -64,7 +64,7 @@ namespace Leitner_System.View
             dontSaveImageDark = new BitmapImage(new Uri("..\\Assets\\DontSaveSpriteDark.png", UriKind.Relative));
             folderImageDark = new BitmapImage(new Uri("..\\Assets\\FolderSpriteDark.png", UriKind.Relative));
             plusImageDark = new BitmapImage(new Uri("..\\Assets\\PlusSpriteDark.png", UriKind.Relative));
-            settingsImageDark = new BitmapImage(new Uri("..\\Assets\\SettingsSpriteDark.png", UriKind.Relative));
+            settingsImageDark = new BitmapImage(new Uri("..\\Assets\\SettinsSpriteDark.png", UriKind.Relative));
             saveImageDark = new BitmapImage(new Uri("..\\Assets\\SaveSpriteDark.png", UriKind.Relative));
             homeImageDark = new BitmapImage(new Uri("..\\Assets\\HomeSpriteDark.png", UriKind.Relative));
             //ButtonsINicialization
@@ -72,8 +72,8 @@ namespace Leitner_System.View
             chooseFolderButtonImage.Source = folderImage;
             newDeckButtonImage.Source = plusImage;
             settingsButtonImage.Source = settingsImage;
-            newCardButtonImage.Source = plusImage;
-            deleteCardButtonImage.Source = deleteImage;
+            newCardButtonImage.Source = plusImageDark;
+            deleteCardButtonImage.Source = deleteImageDark;
         }
         private void CurrentCardChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -97,6 +97,8 @@ namespace Leitner_System.View
         }
         private void deckSaveButton_Click(object sender, RoutedEventArgs e)
         {
+            if (viewModel.CurrentDeck == null)
+                return;
             viewModel.CurrentDeck.SaveRenameThisDeck();
         }
         private void SelectAll_Click(object sender, RoutedEventArgs e)
@@ -406,12 +408,51 @@ namespace Leitner_System.View
 
         private void chooseFolderButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            chooseFolderButtonImage.Source = folderImage;
+            chooseFolderButtonImage.Source = folderImageDark;
         }
 
         private void chooseFolderButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            chooseFolderButtonImage.Source = folderImageDark;
+            chooseFolderButtonImage.Source = folderImage;
+        }
+
+        private void newDeckButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            newDeckButtonImage.Source = plusImageDark;
+        }
+
+        private void deleteDeckButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            deleteDeckButtonImage.Source = deleteImageDark;
+        }
+        private void deleteDeckButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            deleteDeckButtonImage.Source = deleteImage;
+        }
+
+        private void newDeckButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            newDeckButtonImage.Source = plusImage;
+        }
+
+        private void newCardButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            newCardButtonImage.Source = plusImage;
+        }
+
+        private void newCardButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            newCardButtonImage.Source = plusImageDark;
+        }
+
+        private void deleteCardButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            deleteCardButtonImage.Source = deleteImage;
+        }
+
+        private void deleteCardButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            deleteCardButtonImage.Source = deleteImageDark;
         }
     }
     public class TrainingStartEventArgs:EventArgs

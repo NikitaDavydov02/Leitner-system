@@ -254,15 +254,15 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Focusable="False" Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="2" Background="Transparent" GotFocus="StackPanel_GotFocus"/>
-        <Button x:Name="saveCardButton" Focusable="False" Grid.Column="0" Style="{DynamicResource GreyButton}" Click="saveCardButton_Click">
+        <StackPanel Focusable="False" Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="2" Background="White" GotFocus="StackPanel_GotFocus"/>
+        <Button x:Name="saveCardButton" Focusable="False" Grid.Column="0" Style="{DynamicResource DarkButtonWithText}" Click="saveCardButton_Click" MouseEnter="saveCardButton_MouseEnter" MouseLeave="saveCardButton_MouseLeave" Margin="10">
             <Image  x:Name="saveButtonImage"/>
             </Button>
-        <Button x:Name="donSaveCardButton" Focusable="False" Grid.Column="1" Style="{DynamicResource GreyButton}" Click="donSaveCardButton_Click">
+        <Button x:Name="donSaveCardButton" Focusable="False" Grid.Column="1" Style="{DynamicResource DarkButtonWithText}" Click="donSaveCardButton_Click" MouseEnter="donSaveCardButton_MouseEnter" MouseLeave="donSaveCardButton_MouseLeave" Margin="10">
             <Image  x:Name="dontSaveButtonImage"/>
         </Button>
-        <Button x:Name="chooseQuestionImage" Focusable="False" Grid.Column="0" Grid.Row="1" Margin="10" Content="Изображение-вопрос" Click="chooseQuestionImage_Click" Style="{DynamicResource GreenButton}"/>
-        <Button x:Name="chooseAnswerImage" Focusable="False" Grid.Column="1" Grid.Row="1" Margin="10" Content="Изображение-ответ" Click="chooseAnswerImage_Click" Style="{DynamicResource GreenButton}"/>
+        <Button x:Name="chooseQuestionImage" Focusable="False" Grid.Column="0" Grid.Row="1" Margin="10" Content="Изображение-вопрос" Click="chooseQuestionImage_Click" Style="{DynamicResource DarkButtonWithText}"/>
+        <Button x:Name="chooseAnswerImage" Focusable="False" Grid.Column="1" Grid.Row="1" Margin="10" Content="Изображение-ответ" Click="chooseAnswerImage_Click" Style="{DynamicResource DarkButtonWithText}"/>
 
         <Image x:Name="questionImage" Focusable="False" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Width="Auto" Source="{Binding QuestionImage}"/>
         <Image x:Name="answerImage" Focusable="False" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Width="Auto" Source="{Binding AnswerImage}" Visibility="{Binding AnswerIsVisible, Converter={StaticResource visibilityConverter}}"/>

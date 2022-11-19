@@ -233,7 +233,16 @@
   <ItemGroup>
     <Resource Include="Icon.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\DeleteSpriteDark.png" />
+    <Resource Include="Assets\DontSaveSpriteDark.png" />
+    <Resource Include="Assets\FolderSpriteDark.png" />
+    <Resource Include="Assets\imageUploadingIsNotSucesful.jpg" />
+    <Resource Include="Assets\PlusSpriteDark.png" />
+    <Resource Include="Assets\SaveSpriteDark.png" />
+    <Resource Include="Assets\SettingsSprite.png" />
+    <Resource Include="Assets\SettinsSpriteDark.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\DeleteSprite.png" />
   </ItemGroup>

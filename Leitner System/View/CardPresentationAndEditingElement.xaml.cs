@@ -23,10 +23,21 @@ namespace Leitner_System.View
     public partial class CardPresentationAndEditingElement : System.Windows.Controls.UserControl
     {
         public CardViewModel viewModel;
+        private BitmapImage saveImage;
+        private BitmapImage dontSaveImage;
+        private BitmapImage saveImageDark;
+        private BitmapImage dontSaveImageDark;
         public CardPresentationAndEditingElement()
         {
             InitializeComponent();
             SetViewModel(null);
+            saveImage = new BitmapImage(new Uri("..\\Assets\\SaveSprite.png", UriKind.Relative));
+            dontSaveImage = new BitmapImage(new Uri("..\\Assets\\DontSaveSprite.png", UriKind.Relative));
+            saveImageDark = new BitmapImage(new Uri("..\\Assets\\SaveSpriteDark.png", UriKind.Relative));
+            dontSaveImageDark = new BitmapImage(new Uri("..\\Assets\\DontSaveSpriteDark.png", UriKind.Relative));
+
+            saveButtonImage.Source = saveImageDark;
+            dontSaveButtonImage.Source = dontSaveImageDark;
         }
         public void ChangeOrientationOfTextBoxes()
         {
@@ -146,6 +157,26 @@ namespace Leitner_System.View
             ChangeFocusableOfElements(false);
             this.Focus();
             ChangeFocusableOfElements(true);
+        }
+
+        private void saveCardButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            saveButtonImage.Source = saveImage;
+        }
+
+        private void saveCardButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            saveButtonImage.Source = saveImageDark;
+        }
+
+        private void donSaveCardButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            dontSaveButtonImage.Source = dontSaveImageDark;
+        }
+
+        private void donSaveCardButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            dontSaveButtonImage.Source = dontSaveImage;
         }
     }
     class ChangePageBlockingEventArgs : EventArgs
