@@ -5,6 +5,56 @@
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="Leitner_System.App"
              StartupUri="View/MainWindow.xaml">
     <Application.Resources>
+        <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="#FFD5D5D3"/>
+            <Setter Property="BorderBrush" Value="#FF52504E"/>
+            <Setter Property="Foreground" Value="#FF52504E"/>
+            <Setter Property="BorderThickness" Value="5"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="5" Background="#FFD5D5D3" SnapsToDevicePixels="True" CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <!--<Setter Property="Opacity" TargetName="border" Value="0.56"/>-->
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FFBDA5FF"/>
+                                <Setter Property="Background" Value="#FFE0D7F9"/>
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="#FFBDA5FF" BlurRadius="20" ShadowDepth="0" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="Background" Value="#FFE0D7F9"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FFBDA5FF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
         <Style x:Key="WhiteButtonWithText" TargetType="{x:Type Button}">
             <!--<Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>-->
             <Setter Property="Background" Value="White"/>
@@ -113,7 +163,7 @@
         </Style>
         <Style x:Key="PurpleButtonWithText" TargetType="{x:Type Button}">
             <!--<Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>-->
-            <Setter Property="Background" Value="#FFB400FF"/>
+            <Setter Property="Background" Value="#FFBDA5FF"/>
             <!--<Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>-->
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderThickness" Value="0"/>

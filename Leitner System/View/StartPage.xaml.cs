@@ -38,6 +38,7 @@ namespace Leitner_System.View
         private BitmapImage homeImage;
         private BitmapImage exportImage;
         private BitmapImage importImage;
+        private BitmapImage findImage;
         //Light Images
         private BitmapImage deleteImageDark;
         private BitmapImage dontSaveImageDark;
@@ -48,6 +49,7 @@ namespace Leitner_System.View
         private BitmapImage homeImageDark;
         private BitmapImage exportImageDark;
         private BitmapImage importImageDark;
+        private BitmapImage findImageDark;
         public StartPage()
         {
             InitializeComponent();
@@ -65,6 +67,7 @@ namespace Leitner_System.View
             homeImage = new BitmapImage(new Uri("..\\Assets\\HomeSprite.png", UriKind.Relative));
             exportImage = new BitmapImage(new Uri("..\\Assets\\ExportSprite.png", UriKind.Relative));
             importImage = new BitmapImage(new Uri("..\\Assets\\ImportSprite.png", UriKind.Relative));
+            findImage = new BitmapImage(new Uri("..\\Assets\\FindSprite.png", UriKind.Relative));
             ////Dark images inicialization
             deleteImageDark = new BitmapImage(new Uri("..\\Assets\\DeleteSpriteDark.png", UriKind.Relative));
             dontSaveImageDark = new BitmapImage(new Uri("..\\Assets\\DontSaveSpriteDark.png", UriKind.Relative));
@@ -75,6 +78,7 @@ namespace Leitner_System.View
             homeImageDark = new BitmapImage(new Uri("..\\Assets\\HomeSpriteDark.png", UriKind.Relative));
             exportImageDark = new BitmapImage(new Uri("..\\Assets\\ExportSpriteDark.png", UriKind.Relative));
             importImageDark = new BitmapImage(new Uri("..\\Assets\\ImportSpriteDark.png", UriKind.Relative));
+            findImageDark = new BitmapImage(new Uri("..\\Assets\\FindSpriteDark.png", UriKind.Relative));
             //ButtonsINicialization
             deleteDeckButtonImage.Source = deleteImage;
             chooseFolderButtonImage.Source = folderImage;
@@ -84,6 +88,7 @@ namespace Leitner_System.View
             deleteCardButtonImage.Source = deleteImageDark;
             importButtonImage.Source = importImageDark;
             exportButtonImage.Source = exportImageDark;
+            findButtonImage.Source = findImageDark;
         }
         private void CurrentCardChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -488,6 +493,21 @@ namespace Leitner_System.View
         private void exportEacel_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
             exportButtonImage.Source = exportImageDark;
+        }
+
+        private void findButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            findButtonImage.Source = findImage;
+        }
+
+        private void findButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void findButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            findButtonImage.Source = findImageDark;
         }
     }
     public class TrainingStartEventArgs:EventArgs

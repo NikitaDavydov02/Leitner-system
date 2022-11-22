@@ -310,12 +310,18 @@ namespace Leitner_System.ViewModel
         }
         public void ImportExcelFileToCurrentDeck(string filePath)
         {
+            if (String.IsNullOrEmpty(filePath))
+                return;
+            if (model.CurrentDeck == null)
+                return;
             model.ImportExcelFileToCurrentDeck(filePath);
             ReloadCardList();
             CurrentDeck.Count = model.CurrentDeck.Cards.Count;
         }
         public void ExportCurrentDeckToExcelFile(string filePath)
         {
+            if (String.IsNullOrEmpty(filePath))
+                return;
             model.ExportCurrentDeckInExcelFile(filePath);
         }
     }

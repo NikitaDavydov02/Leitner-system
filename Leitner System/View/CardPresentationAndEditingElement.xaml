@@ -267,7 +267,7 @@
         <Image x:Name="questionImage" Focusable="False" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Width="Auto" Source="{Binding QuestionImage}"/>
         <Image x:Name="answerImage" Focusable="False" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Width="Auto" Source="{Binding AnswerImage}" Visibility="{Binding AnswerIsVisible, Converter={StaticResource visibilityConverter}}"/>
 
-        <TextBox x:Name="questionTextBox" Grid.ColumnSpan="2" AcceptsReturn="True" Grid.Column="0" Grid.Row="3" Text="{Binding Question,Mode=TwoWay}" Style="{DynamicResource TextBoxStyle}" MouseDown="questionTextBox_MouseDown" PreviewMouseDown="questionTextBox_PreviewMouseDown"/>
-        <TextBox x:Name="answerTextBox" Grid.ColumnSpan="2" AcceptsReturn="True" Grid.Column="0" Grid.Row="4" Text="{Binding Answer, Mode=TwoWay}" Style="{DynamicResource TextBoxStyle}" Visibility="{Binding AnswerIsVisible, Converter={StaticResource visibilityConverter}}" MouseDown="answerTextBox_MouseDown" PreviewMouseDown="answerTextBox_PreviewMouseDown"/>
+        <TextBox x:Name="questionTextBox" Grid.ColumnSpan="2" AcceptsReturn="True" Grid.Column="0" Grid.Row="3" Text="{Binding Question,Mode=TwoWay}" Style="{DynamicResource TextBoxStyle1}" MouseDown="questionTextBox_MouseDown" PreviewMouseDown="questionTextBox_PreviewMouseDown"/>
+        <TextBox x:Name="answerTextBox" Grid.ColumnSpan="2" AcceptsReturn="True" Grid.Column="0" Grid.Row="4" Text="{Binding Answer, Mode=TwoWay}" Style="{DynamicResource TextBoxStyle1}" Visibility="{Binding AnswerIsVisible, Converter={StaticResource visibilityConverter}}" MouseDown="answerTextBox_MouseDown" PreviewMouseDown="answerTextBox_PreviewMouseDown"/>
     </Grid>
 </UserControl>

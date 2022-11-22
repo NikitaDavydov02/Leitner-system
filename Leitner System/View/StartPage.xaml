@@ -102,7 +102,7 @@
                                         <DropShadowEffect Color="White" BlurRadius="20" ShadowDepth="0"/>
                                     </Setter.Value>
                                 </Setter>
-                                
+
                             </Trigger>
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter TargetName="arrow" Property="RenderTransform">
@@ -194,11 +194,11 @@
                                 <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                     <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
                                         <Rectangle x:Name="opaqueRect" Fill="Transparent" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
-                                        
+
                                     </Canvas>
                                     <Border BorderThickness="0" BorderBrush="Red" CornerRadius="10">
                                         <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                                           
+
                                         </ItemsPresenter>
                                     </Border>
                                 </Grid>
@@ -207,15 +207,9 @@
                     </Themes:SystemDropShadowChrome>
                 </Popup>
                 <ToggleButton x:Name="toggleButton"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}" Click="toggleButton_Click"/>
-                <!--<ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>-->
                 <Viewbox>
                     <ContentPresenter x:Name="contentPresenter" TextBlock.Foreground="{Binding ElementName=toggleButton,Path=Foreground}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="Left" IsHitTestVisible="false" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                 </Viewbox>
-                <!--<ContentPresenter x:Name="contentPresenter" HorizontalAlignment="Left" IsHitTestVisible="false"  Margin="10 0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center">
-                    <ContentPresenter.Content>
-                        <TextBlock x:Name="contnent" FontSize="8" Text="{TemplateBinding SelectionBoxItem}"/>
-                    </ContentPresenter.Content>
-                </ContentPresenter>-->
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
@@ -335,6 +329,124 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <!--////////////////////////////////////////////////-->
+        <!--////////////////////////////////////////////////-->
+        <!--////////////////////////////////////////////////-->
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHover.Background" Color="White"/>
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHover.Border" Color="White"/>
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelected.Background" Color="#FF52504E"/>
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelected.Border" Color="#FF52504E"/>
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedHover.Background" Color="White"/>
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedHover.Border" Color="White"/>
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedNoFocus.Background" Color="#3DDADADA"/>
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedNoFocus.Border" Color="#3DDADADA"/>
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewFocus.Border" Color="#FF52504E"/>
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Background" Color="#FF52504E"/>
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Border" Color="#FF52504E"/>
+        <Style x:Key="ComboBoxItemStyle1" TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Padding" Value="4,1"/>
+            <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+
+            <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border TextElement.Foreground="#FF52504E" x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true" CornerRadius="10">
+                            <Viewbox MinHeight="20">
+                                <ContentPresenter x:Name="Sd" HorizontalAlignment="Left" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+
+                                </ContentPresenter>
+                            </Viewbox>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="False"/>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                    <Condition Property="IsKeyboardFocused" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewHover.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewHover.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="Bd" Value="#FF52504E"/>
+                                <!--<Setter Property="Effect" TargetName="Bd">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="Red" BlurRadius="20" ShadowDepth="0"/>
+                                    </Setter.Value>
+                                </Setter>-->
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="True"/>
+                                    <Condition Property="IsMouseOver" Value="False"/>
+                                    <Condition Property="IsKeyboardFocused" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="#FF52504E"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="#FF52504E"/>
+                                <Setter Property="TextElement.Foreground" TargetName="Bd" Value="White"/>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="True"/>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelectedHover.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelectedHover.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="Bd" Value="#FF52504E"/>
+                                <Setter Property="Effect" TargetName="Bd">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="#FF52504E" BlurRadius="20" ShadowDepth="0" />
+                                    </Setter.Value>
+                                </Setter>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="True"/>
+                                    <Condition Property="IsMouseOver" Value="False"/>
+                                    <Condition Property="IsKeyboardFocused" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="#FF52504E"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="#FF52504E"/>
+                                <Setter Property="TextElement.Foreground" TargetName="Bd" Value="White"/>
+
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="False"/>
+                                    <Condition Property="IsMouseOver" Value="False"/>
+                                    <Condition Property="IsKeyboardFocused" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewFocus.Border}"/>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="False"/>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                    <Condition Property="IsKeyboardFocused" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewHoverFocus.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewHoverFocus.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="Bd" Value="White"/>
+                                <Setter Property="Effect" TargetName="Bd">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="#FF52504E" BlurRadius="20" ShadowDepth="0" />
+                                    </Setter.Value>
+                                </Setter>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
     </Page.Resources>
     <Page.CommandBindings>
         <CommandBinding x:Name="Copy" Command="ApplicationCommands.Copy" CanExecute="Copy_CanExecute" Executed="Copy_Executed"/>
@@ -376,10 +488,10 @@
             </Grid.RowDefinitions>
             <Button x:Name="SelectAll" Margin="15 2" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Content="Выбрать все" Click="SelectAll_Click" Style="{DynamicResource WhiteButtonWithText}" IsEnabled="{Binding Decks.Count, Converter={StaticResource integerToVisibilityConverter}}"/>
             <ComboBox x:Name="ReverseSetting" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" Margin="15 2" Style="{DynamicResource ComboBoxStyle1}" SelectionChanged="ReverseSetting_SelectionChanged" SelectedIndex="0" Grid.ColumnSpan="2">
-                <ComboBoxItem Content="Прямо"/>
-                <ComboBoxItem Content="Обратно"/>
-                <ComboBoxItem Content="Случайно"/>
-                <ComboBoxItem Content="Пользовательский"/>
+                <ComboBoxItem Content="Прямо" FontSize="8" Style="{DynamicResource ComboBoxItemStyle1}"/>
+                <ComboBoxItem Content="Обратно" Style="{DynamicResource ComboBoxItemStyle1}"/>
+                <ComboBoxItem Content="Случайно" FontSize="8"  Style="{DynamicResource ComboBoxItemStyle1}"/>
+                <ComboBoxItem Content="Пользовательский" FontSize="8"  Style="{DynamicResource ComboBoxItemStyle1}"/>
             </ComboBox>
         </Grid>
         <ScrollViewer x:Name="deckScrollViewer" Grid.Column="0" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="15" LostFocus="deckScrollViewer_LostFocus" GotFocus="deckScrollViewer_GotFocus" PreviewMouseWheel="deckScrollViewer_PreviewMouseWheel" Foreground="Black">
@@ -411,7 +523,7 @@
                             </Grid.ContextMenu>
                             <CheckBox x:Name="SelectiontoTraining" IsChecked="{Binding DeckIsSelectedForTraining, Mode=TwoWay}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="20" MinHeight="20" Width="20" Height="13"/>
                             <!--<CheckBox x:Name="SelectedAsReversed" IsChecked="{Binding DeckIsSelectedAsReversed, Mode=TwoWay}" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="20" MinHeight="20" Width="20" Height="13"/>-->
-                            <ComboBox x:Name="ReverseSetting" IsEnabled="{Binding ReverseSettingChangingEnable}" SelectedIndex="{Binding ReverseSetting, Mode=TwoWay}" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="70" MinHeight="20" Width="20" Height="13">
+                            <ComboBox x:Name="ReverseSetting" IsEnabled="{Binding ReverseSettingChangingEnable}" SelectedIndex="{Binding ReverseSetting, Mode=TwoWay}" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="70" MinHeight="20" Width="20" Height="13" Style="{DynamicResource ComboBoxStyle1}">
                                 <ComboBoxItem Content="Прямо"/>
                                 <ComboBoxItem Content="Обратно"/>
                                 <ComboBoxItem Content="Случайно"/>
@@ -452,7 +564,7 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="deckName" Grid.Column="0" Text="{Binding CurrentDeck.DeckName, Mode=TwoWay}" Style="{DynamicResource TextBoxStyle}"/>
+            <TextBox x:Name="deckName" Grid.Column="0" Text="{Binding CurrentDeck.DeckName, Mode=TwoWay}" Style="{DynamicResource TextBoxStyle1}"/>
             <Button x:Name="deckSaveButton" Grid.Column="1" Margin="10" Content="Переименовать" Click="deckSaveButton_Click" Style="{DynamicResource DarkButtonWithText}"/>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1">
@@ -460,10 +572,14 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
+            <TextBox x:Name="findCard" Text="{Binding FindCardRequest, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource TextBoxStyle1}" TextChanged="findCard_TextChanged"/>
+            <Button x:Name="findButton" Grid.Column="1" Margin="10"  Style="{DynamicResource DarkButtonWithText}" MouseEnter="findButton_MouseEnter" MouseDown="findButton_MouseDown" MouseLeave="findButton_MouseLeave">
+                <Image  x:Name="findButtonImage"/>
+            </Button>
+
         </Grid>
-        <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
-            <TextBox x:Name="findCard" Text="{Binding FindCardRequest, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource TextBoxStyle}" TextChanged="findCard_TextChanged"/>
-        </StackPanel>
+  
+            
         <ScrollViewer x:Name="cardScrollViewer" Grid.Column="1" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="15" GotFocus="ScrollViewer_GotFocus" LostFocus="ScrollViewer_LostFocus" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" >
             <!--<ScrollViewer x:Name="cardScrollViewer" Grid.Column="1" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="15" HorizontalScrollBarVisibility="Disabled">-->
             <ListView  x:Name="cardsInDeck" SelectionChanged="cardsInDeck_SelectionChanged" ItemsSource="{Binding Cards}" Background="#FFD5D5D3" GotFocus="cardsInDeck_GotFocus" LostFocus="cardsInDeck_LostFocus">
