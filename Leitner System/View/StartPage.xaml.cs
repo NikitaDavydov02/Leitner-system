@@ -36,6 +36,8 @@ namespace Leitner_System.View
         private BitmapImage settingsImage;
         private BitmapImage saveImage;
         private BitmapImage homeImage;
+        private BitmapImage exportImage;
+        private BitmapImage importImage;
         //Light Images
         private BitmapImage deleteImageDark;
         private BitmapImage dontSaveImageDark;
@@ -44,6 +46,8 @@ namespace Leitner_System.View
         private BitmapImage settingsImageDark;
         private BitmapImage saveImageDark;
         private BitmapImage homeImageDark;
+        private BitmapImage exportImageDark;
+        private BitmapImage importImageDark;
         public StartPage()
         {
             InitializeComponent();
@@ -59,6 +63,8 @@ namespace Leitner_System.View
             settingsImage = new BitmapImage(new Uri("..\\Assets\\SettingsSprite.png", UriKind.Relative));
             saveImage = new BitmapImage(new Uri("..\\Assets\\SaveSprite.png", UriKind.Relative));
             homeImage = new BitmapImage(new Uri("..\\Assets\\HomeSprite.png", UriKind.Relative));
+            exportImage = new BitmapImage(new Uri("..\\Assets\\ExportSprite.png", UriKind.Relative));
+            importImage = new BitmapImage(new Uri("..\\Assets\\ImportSprite.png", UriKind.Relative));
             ////Dark images inicialization
             deleteImageDark = new BitmapImage(new Uri("..\\Assets\\DeleteSpriteDark.png", UriKind.Relative));
             dontSaveImageDark = new BitmapImage(new Uri("..\\Assets\\DontSaveSpriteDark.png", UriKind.Relative));
@@ -67,6 +73,8 @@ namespace Leitner_System.View
             settingsImageDark = new BitmapImage(new Uri("..\\Assets\\SettinsSpriteDark.png", UriKind.Relative));
             saveImageDark = new BitmapImage(new Uri("..\\Assets\\SaveSpriteDark.png", UriKind.Relative));
             homeImageDark = new BitmapImage(new Uri("..\\Assets\\HomeSpriteDark.png", UriKind.Relative));
+            exportImageDark = new BitmapImage(new Uri("..\\Assets\\ExportSpriteDark.png", UriKind.Relative));
+            importImageDark = new BitmapImage(new Uri("..\\Assets\\ImportSpriteDark.png", UriKind.Relative));
             //ButtonsINicialization
             deleteDeckButtonImage.Source = deleteImage;
             chooseFolderButtonImage.Source = folderImage;
@@ -74,6 +82,8 @@ namespace Leitner_System.View
             settingsButtonImage.Source = settingsImage;
             newCardButtonImage.Source = plusImageDark;
             deleteCardButtonImage.Source = deleteImageDark;
+            importButtonImage.Source = importImageDark;
+            exportButtonImage.Source = exportImageDark;
         }
         private void CurrentCardChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -453,6 +463,31 @@ namespace Leitner_System.View
         private void deleteCardButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
             deleteCardButtonImage.Source = deleteImageDark;
+        }
+
+        private void toggleButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void importExcel_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            importButtonImage.Source = importImage;
+        }
+
+        private void importExcel_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            importButtonImage.Source = importImageDark;
+        }
+
+        private void exportEacel_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            exportButtonImage.Source = exportImage;
+        }
+
+        private void exportEacel_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            exportButtonImage.Source = exportImageDark;
         }
     }
     public class TrainingStartEventArgs:EventArgs

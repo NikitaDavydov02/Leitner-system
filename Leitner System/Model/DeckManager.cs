@@ -195,6 +195,8 @@ namespace Leitner_System.Model
         }
         public void ImportExcelFileToCurrentDeck(string absolutePath)
         {
+            if (String.IsNullOrEmpty(absolutePath))
+                return;
             if (CurrentDeck == null)
             {
                 MessageBox.Show("Колода не выбрана");
@@ -211,6 +213,8 @@ namespace Leitner_System.Model
         }
         public void ExportCurrentDeckInExcelFile(string absolutePath)
         {
+            if (String.IsNullOrEmpty(absolutePath))
+                return;
             if (CurrentDeck == null)
             {
                 MessageBox.Show("Колода не выбрана");

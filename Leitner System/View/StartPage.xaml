@@ -193,9 +193,14 @@
                             <ScrollViewer x:Name="DropDownScrollViewer">
                                 <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                     <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
-                                        <Rectangle x:Name="opaqueRect" Fill="{Binding Background, ElementName=dropDownBorder}" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
+                                        <Rectangle x:Name="opaqueRect" Fill="Transparent" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
+                                        
                                     </Canvas>
-                                    <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    <Border BorderThickness="0" BorderBrush="Red" CornerRadius="10">
+                                        <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                           
+                                        </ItemsPresenter>
+                                    </Border>
                                 </Grid>
                             </ScrollViewer>
                         </Border>
@@ -511,11 +516,11 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="importExcel" Grid.Column="0" Style="{DynamicResource DarkButtonWithText}" Margin="10,10,10,9.8" Grid.RowSpan="2" Click="importExcel_Click">
-                <Image  x:Name="exportButtonImage"/>
-            </Button>
-            <Button x:Name="exportEacel" Grid.Column="1" Style="{DynamicResource DarkButtonWithText}" Margin="10,10,10,9.8" Grid.RowSpan="2" Click="exportEacel_Click">
+            <Button x:Name="importExcel" Grid.Column="0" Style="{DynamicResource DarkButtonWithText}" Margin="10,10,10,9.8" Grid.RowSpan="2" Click="importExcel_Click" MouseEnter="importExcel_MouseEnter" MouseLeave="importExcel_MouseLeave">
                 <Image  x:Name="importButtonImage"/>
+            </Button>
+            <Button x:Name="exportEacel" Grid.Column="1" Style="{DynamicResource DarkButtonWithText}" Margin="10,10,10,9.8" Grid.RowSpan="2" Click="exportEacel_Click" MouseEnter="exportEacel_MouseEnter" MouseLeave="exportEacel_MouseLeave">
+                <Image  x:Name="exportButtonImage"/>
             </Button>
         </Grid>
         <view:CardPresentationAndEditingElement x:Name="cardPresentationAndEditingElement" Grid.Column="2" Grid.Row="0" Grid.RowSpan="5"/>

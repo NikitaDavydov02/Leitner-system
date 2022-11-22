@@ -171,12 +171,12 @@ namespace Leitner_System.View
 
         private void donSaveCardButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            dontSaveButtonImage.Source = dontSaveImageDark;
+            dontSaveButtonImage.Source = dontSaveImage;
         }
 
         private void donSaveCardButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            dontSaveButtonImage.Source = dontSaveImage;
+            dontSaveButtonImage.Source = dontSaveImageDark;
         }
     }
     class ChangePageBlockingEventArgs : EventArgs
