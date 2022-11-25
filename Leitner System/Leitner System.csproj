@@ -229,9 +229,6 @@
     <Resource Include="Assets\Settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -268,6 +265,9 @@
   <ItemGroup>
     <Resource Include="Assets\FindSprite.png" />
     <Resource Include="Assets\FindSpriteDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

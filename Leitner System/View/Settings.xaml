@@ -54,7 +54,7 @@
             </Setter>
         </Style>
     </Page.Resources>
-    <Grid Background="#FFD5D5D3" Focusable="False">
+    <Grid Background="White" Focusable="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" MaxHeight="100" MinHeight="20"/>
             <RowDefinition Height="6*"/>
@@ -64,23 +64,23 @@
             <ColumnDefinition Width="4*" MinWidth="600"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="homeButton" MaxWidth="50" Grid.Column="0" Style="{DynamicResource GreyButton}" Width="Auto" Height="Auto" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15" Click="homeButton_Click">
+        <Button x:Name="homeButton" MaxWidth="50" Grid.Column="0" Style="{DynamicResource DarkButtonWithText}" Width="Auto" Height="Auto" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15" Click="homeButton_Click">
             <Image x:Name="homeImage"/>
         </Button>
         <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="15" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="5">Путь к папке, в которую сохраняются колоды</TextBlock>
-                <TextBox x:Name="pathOfSaveDeck" IsReadOnly="True"  Margin="5" MaxWidth="150" HorizontalAlignment="Stretch" Text="{Binding SettingsModel.AbsolutePathOfSaveDeckFolder, Mode=OneWay}"/>
-                <Button x:Name="chooseSaveFolder" Margin="5" HorizontalAlignment="Right" Click="chooseSaveFolder_Click" >Выбрать...</Button>
+                <TextBox x:Name="pathOfSaveDeck" Style="{DynamicResource TextBoxStyle1}" IsReadOnly="True"  Margin="5" MinWidth="150" HorizontalAlignment="Stretch" Text="{Binding SettingsModel.AbsolutePathOfSaveDeckFolder, Mode=OneWay}"/>
+                <Button x:Name="chooseSaveFolder" Style="{DynamicResource DarkButtonWithText}" MaxHeight="25" Margin="5" HorizontalAlignment="Right" Click="chooseSaveFolder_Click" >Выбрать...</Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <CheckBox x:Name="makeBackupCheckbox" Margin="5" IsChecked="{Binding SettingsModel.MakeBackup, Mode=TwoWay}"/>
+                <CheckBox x:Name="makeBackupCheckbox" Margin="5" IsChecked="{Binding SettingsModel.MakeBackup, Mode=TwoWay}" Style="{DynamicResource CheckBoxStyle1}"/>
                 <TextBlock Margin="5">Производить бэкап колод при каждой их новой загрузке</TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="5">Путь к папке, в которую производится бэкап</TextBlock>
-                <TextBox x:Name="pathOfBackupDeck" IsReadOnly="True" Margin="5" MaxWidth="150" HorizontalAlignment="Stretch" Text="{Binding SettingsModel.AbsolutePathOfBackupFolder, Mode=OneWay}"/>
-                <Button x:Name="chooseBackupFolder" Margin="5" HorizontalAlignment="Right" Click="chooseBackupFolder_Click">Выбрать...</Button>
+                <TextBox x:Name="pathOfBackupDeck" Style="{DynamicResource TextBoxStyle1}" IsReadOnly="True" Margin="5"  MinWidth="150" HorizontalAlignment="Stretch" Text="{Binding SettingsModel.AbsolutePathOfBackupFolder, Mode=OneWay}"/>
+                <Button x:Name="chooseBackupFolder" Margin="5" Style="{DynamicResource DarkButtonWithText}" MaxHeight="25" HorizontalAlignment="Right" Click="chooseBackupFolder_Click">Выбрать...</Button>
             </StackPanel>
             <!--<StackPanel Orientation="Horizontal">
                 <CheckBox x:Name="randomReverseCheckbox" Margin="5" IsChecked="{Binding SettingsModel.RandomReverseAtTraining, Mode=TwoWay}"/>
@@ -88,13 +88,13 @@
             </StackPanel>-->
 
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0 15" Orientation="Vertical">
-                <ScrollViewer x:Name="trainingTemplatesScrollViewer" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="250" PreviewMouseWheel="trainingTemplatesScrollViewer_PreviewMouseWheel" >
-                    <ListView x:Name="trainingTemplatesListView" ItemsSource="{Binding TrainingTemplates, Mode=OneWay}" Background="#FFD5D5D3">
-                        <ListView.ItemContainerStyle>
+                <ScrollViewer x:Name="trainingTemplatesScrollViewer" Template="{DynamicResource ScrollViewerControlTemplate1}" MaxHeight="180" HorizontalAlignment="Stretch" Height="250" PreviewMouseWheel="trainingTemplatesScrollViewer_PreviewMouseWheel" >
+                    <ListView x:Name="trainingTemplatesListView" Style="{DynamicResource ListViewStyle1}" ItemContainerStyle="{DynamicResource ListViewItemStyle1}" ItemsSource="{Binding TrainingTemplates, Mode=OneWay}" Background="#FFD5D5D3">
+                        <!--<ListView.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                             </Style>
-                        </ListView.ItemContainerStyle>
+                        </ListView.ItemContainerStyle>-->
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Height="40">
@@ -141,10 +141,10 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="newCardButton" Grid.Column="0" MaxWidth="50" MaxHeight="50" HorizontalAlignment="Right" Margin="5" Click="newCardButton_Click" >
+                <Button x:Name="newCardButton" Style="{DynamicResource DarkButtonWithText}" Grid.Column="0" MaxWidth="50" MaxHeight="50" HorizontalAlignment="Right" Margin="5" Click="newCardButton_Click" >
                     <Image x:Name="newImage"/>
                 </Button>
-                <Button x:Name="deleteCardButton" Grid.Column="1" MaxWidth="50" MaxHeight="50" HorizontalAlignment="Left" Margin="5" Click="deleteCardButton_Click">
+                <Button x:Name="deleteCardButton"  Style="{DynamicResource DarkButtonWithText}" Grid.Column="1" MaxWidth="50" MaxHeight="50" HorizontalAlignment="Left" Margin="5" Click="deleteCardButton_Click">
                     <Image x:Name="deleteImage"/>
                 </Button>
             </Grid>
