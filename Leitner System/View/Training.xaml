@@ -237,7 +237,7 @@
     <Page.CommandBindings>
        <CommandBinding x:Name="Save" Command="ApplicationCommands.Save" CanExecute="Save_CanExecute" Executed="Save_Executed"/>
     </Page.CommandBindings>
-    <Grid Background="#FFD5D5D3" Focusable="False" MinHeight="350" MinWidth="600">
+    <Grid Background="White" Focusable="False" MinHeight="350" MinWidth="600">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -248,52 +248,51 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="correctAnswer" Focusable="False" Grid.Column="0" Grid.Row="3" Content="Верно" Style="{DynamicResource GreenButton}" Click="correctAnswer_Click" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}"/>
+        <Button x:Name="correctAnswer" Focusable="False" Grid.Column="0" Grid.Row="3" Content="Верно" MaxWidth="200" Margin="60 15" Style="{DynamicResource GreenButton1}" Click="correctAnswer_Click" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}"/>
         <!--<Button x:Name="showAnswerButton" Focusable="False" Grid.Column="1" Grid.Row="2" Content="Показать ответ" Click="showAnswerButton_Click" Style="{DynamicResource GreyButton}" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}"/>-->
         <!--<Button x:Name="earlyFinish" Focusable="False" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Content="Завершить" Style="{DynamicResource GreyButton}" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}" Click="earlyFinish_Click"/>-->
-        <Button x:Name="wrongAnswer" Focusable="False" Grid.Column="1" Grid.Row="3"  Content="Неверно" Style="{DynamicResource RedButton}" Click="wrongAnswer_Click" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}"/>
-        <Button x:Name="deleteCard" Focusable="False" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Style="{DynamicResource LightGreyButton}" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}" Click="deleteCard_Click">
+        <Button x:Name="wrongAnswer" Focusable="False" Grid.Column="1" Grid.Row="3"  Content="Неверно" MaxWidth="200" Margin="60 15" Style="{DynamicResource RedButton1}" Click="wrongAnswer_Click" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}"/>
+        <Button x:Name="deleteCard" Focusable="False" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Margin="10" Style="{DynamicResource DarkButtonWithText}" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}" Click="deleteCard_Click">
             <Image x:Name="deleteImage"/>
         </Button>
         <TextBlock x:Name="resultLabel" Focusable="False" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Text="{Binding CardsAnswered}"/>
         <local:CardPresentationAndEditingElement Focusable="False" x:Name="cardPresentationAndEditingElement" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
         <Button x:Name="showAnswerButton" Focusable="False" Grid.Column="1" Grid.Row="2" Content="Показать ответ" Click="showAnswerButton_Click" Style="{DynamicResource GreyButton}" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}"/>
         <Button x:Name="earlyFinish" Focusable="False" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Content="Завершить" Style="{DynamicResource GreyButton}" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}" Click="earlyFinish_Click"/>
-        
-        
-        <StackPanel x:Name="resultPanel" Focusable="False" Width="400" Height="300" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.RowSpan="4" Background="#FFA0A0A0" Visibility="{Binding TrainingIsComleted, Converter={StaticResource visibilityConverter}}">
-            <TextBlock x:Name="correctResults" FontSize="20" FontFamily="Calibri" Text="{Binding CorrectAnswersCount}" HorizontalAlignment="Center"/>
-            <TextBlock x:Name="wrongResults" FontSize="20" FontFamily="Calibri" Text="{Binding WrongAnswersCount}" HorizontalAlignment="Center"/>
-            <TextBlock x:Name="procentage" FontSize="20" FontFamily="Calibri" Text="{Binding Procentage}" HorizontalAlignment="Center"/>
-            <ScrollViewer x:Name="changeAnswersScrollViewer" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="15" PreviewMouseWheel="changeAnswersScrollViewer_PreviewMouseWheel">
-                <!--<ScrollViewer x:Name="cardScrollViewer" Grid.Column="1" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="15" HorizontalScrollBarVisibility="Disabled">-->
-                <ListView  x:Name="changeAnswers" MaxHeight="100" ItemsSource="{Binding Results}" Background="#FFD5D5D3" SelectionChanged="changeAnswers_SelectionChanged">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Height="25">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*" MinWidth="300"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding Name}" HorizontalAlignment="Left" Grid.Column="0"/>
-                                <ComboBox x:Name="resultOfCard" SelectedIndex="{Binding Result, Mode=TwoWay}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" MinWidth="70" MinHeight="20" Width="20" Height="13">
-                                    <ComboBoxItem Content="Нет ответа"/>
-                                    <ComboBoxItem Content="Верно"/>
-                                    <ComboBoxItem Content="Неверно"/>
-                                    <ComboBoxItem Content="Карта удалена"/>
-                                </ComboBox>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollViewer>
-            <Button x:Name="toHomeButton" Style="{DynamicResource GreenButton}" Content="Домой" Click="toHomeButton_Click"/>
-        
+
+       
+        <StackPanel x:Name="resultPanel" Focusable="False" Width="400" Height="300" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.RowSpan="4" Background="Transparent" Visibility="{Binding TrainingIsComleted, Converter={StaticResource visibilityConverter}}">
+            <Border BorderBrush="#FF52504E" BorderThickness="2" CornerRadius="10">
+                <StackPanel Background="White">
+                    <TextBlock x:Name="correctResults" FontSize="20" FontFamily="Calibri" Text="{Binding CorrectAnswersCount}" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="wrongResults" FontSize="20" FontFamily="Calibri" Text="{Binding WrongAnswersCount}" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="procentage" FontSize="20" FontFamily="Calibri" Text="{Binding Procentage}" HorizontalAlignment="Center"/>
+                    <ScrollViewer x:Name="changeAnswersScrollViewer" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="15" PreviewMouseWheel="changeAnswersScrollViewer_PreviewMouseWheel" MinHeight="100" Template="{DynamicResource ScrollViewerControlTemplate1}">
+                        <!--<ScrollViewer x:Name="cardScrollViewer" Grid.Column="1" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="15" HorizontalScrollBarVisibility="Disabled">-->
+                        <ListView  x:Name="changeAnswers" Style="{DynamicResource ListViewStyle1}" ItemContainerStyle="{DynamicResource ListViewItemStyle1}" MaxHeight="100" ItemsSource="{Binding Results}" Background="#FFD5D5D3" SelectionChanged="changeAnswers_SelectionChanged">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="25">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Left" Grid.Column="0"/>
+                                        <ComboBox x:Name="resultOfCard" SelectedIndex="{Binding Result, Mode=TwoWay}" Style="{DynamicResource ComboBoxStyle1}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" MinWidth="70" MinHeight="20" Width="20" Height="13">
+                                            <ComboBoxItem Content="Нет ответа" Style="{DynamicResource ComboBoxItemStyle1}"/>
+                                            <ComboBoxItem Content="Верно"  Style="{DynamicResource ComboBoxItemStyle1}"/>
+                                            <ComboBoxItem Content="Неверно"  Style="{DynamicResource ComboBoxItemStyle1}"/>
+                                            <ComboBoxItem Content="Карта удалена"  Style="{DynamicResource ComboBoxItemStyle1}"/>
+                                        </ComboBox>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </ScrollViewer>
+                    <Button x:Name="toHomeButton" Style="{DynamicResource DarkButtonWithText}" Margin="10" MaxHeight="50" Content="Домой" Click="toHomeButton_Click"/>
+
+                </StackPanel>
+            </Border>
         </StackPanel>
     </Grid>
     

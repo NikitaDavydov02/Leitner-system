@@ -23,11 +23,29 @@ namespace Leitner_System.View
     public partial class Settings : Page
     {
         SettingsViewModel viewModel;
+        private BitmapImage plusImage;
+        private BitmapImage homeImage;
+        private BitmapImage deleteImage;
+
+        private BitmapImage deleteImageDark;
+        private BitmapImage homeImageDark;
+        private BitmapImage plusImageDark;
         public Settings()
         {
             InitializeComponent();
             viewModel = new SettingsViewModel();
             DataContext = viewModel;
+            plusImage = new BitmapImage(new Uri("..\\Assets\\PlusSprite.png", UriKind.Relative));
+            homeImage = new BitmapImage(new Uri("..\\Assets\\HomeSprite.png", UriKind.Relative));
+            deleteImage = new BitmapImage(new Uri("..\\Assets\\DeleteSprite.png", UriKind.Relative));
+            ////Dark images inicialization
+            deleteImageDark = new BitmapImage(new Uri("..\\Assets\\DeleteSpriteDark.png", UriKind.Relative));
+            plusImageDark = new BitmapImage(new Uri("..\\Assets\\PlusSpriteDark.png", UriKind.Relative));
+            homeImageDark = new BitmapImage(new Uri("..\\Assets\\HomeSpriteDark.png", UriKind.Relative));
+
+            homeButtonImage.Source = homeImageDark;
+            newButtonImage.Source = plusImageDark;
+            deleteButtonImage.Source = deleteImageDark;
         }
         public event EventHandler GoToHomePage;
 
@@ -117,5 +135,43 @@ namespace Leitner_System.View
             viewModel.DeleteSelectedTemplates(indexesOfSelectedItems);
         }
 
+        private void StackPanel_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+        }
+
+        private void StackPanel_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+
+        }
+
+        private void homeButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            homeButtonImage.Source = homeImage;
+        }
+
+        private void homeButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            homeButtonImage.Source = homeImageDark;
+        }
+
+        private void newCardButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            newButtonImage.Source = plusImage;
+        }
+
+        private void newCardButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            newButtonImage.Source = plusImageDark;
+        }
+
+        private void deleteCardButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            deleteButtonImage.Source = deleteImage;
+        }
+
+        private void deleteCardButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            deleteButtonImage.Source = deleteImageDark;
+        }
     }
 }
