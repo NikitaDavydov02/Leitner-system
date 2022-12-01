@@ -49,10 +49,13 @@ namespace Leitner_System.ViewModel
                 string cardAbsoluteQuestionImagePath = Path.Combine(FileManager.currentFolderWithDecksFullPath, Card.parentDeck.Name, Card.RelativeToDeckFolderQuestionImagePath);
                 if (String.IsNullOrEmpty(Card.RelativeToDeckFolderQuestionImagePath))
                     cardAbsoluteQuestionImagePath = Path.Combine(FileManager.currentFolderWithDecksFullPath, Card.parentDeck.Name);
-                if (Question == Card.Question &&
+                if ((!straightOrReverse && Question == Card.Question &&
                 Answer == Card.Answer &&
                 AbsoluteQuestionImagePath == cardAbsoluteQuestionImagePath &&
-                AbsoluteAnswerImagePath == cardAbsoluteAnswerImagePath)
+                AbsoluteAnswerImagePath == cardAbsoluteAnswerImagePath) || (straightOrReverse && Question == Card.Answer &&
+                Answer == Card.Question &&
+                AbsoluteAnswerImagePath == cardAbsoluteQuestionImagePath &&
+                AbsoluteQuestionImagePath == cardAbsoluteAnswerImagePath))
                 {
                     return false;
                 }

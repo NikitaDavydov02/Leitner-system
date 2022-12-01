@@ -65,7 +65,7 @@ namespace Leitner_System.Model
         {
             if (indexesOfDecksToRemove.Count == 0)
             {
-                MessageBox.Show("Колода не выбрана");
+                MessageBox.Show("Deck is not choosen");
                 return;
             }
             List<Deck> decksToRemove = new List<Deck>();
@@ -99,7 +99,7 @@ namespace Leitner_System.Model
         {
             if (CurrentDeck == null)
             {
-                MessageBox.Show("Колода не выбрана");
+                MessageBox.Show("Deck is not choosen");
                 return;
             }
             CurrentDeck.CreateNewCard();
@@ -199,7 +199,7 @@ namespace Leitner_System.Model
                 return;
             if (CurrentDeck == null)
             {
-                MessageBox.Show("Колода не выбрана");
+                MessageBox.Show("Deck is not choosen is not choosen");
                 return;
             }
             Dictionary<string, string> importContent = FileManager.ImportExcelFile(absolutePath);
@@ -217,7 +217,7 @@ namespace Leitner_System.Model
                 return;
             if (CurrentDeck == null)
             {
-                MessageBox.Show("Колода не выбрана");
+                MessageBox.Show("Deck is not choosen is not choosen");
                 return;
             }
             Dictionary<string, string> exportContent = new Dictionary<string, string>();

@@ -261,13 +261,13 @@
         <Button x:Name="donSaveCardButton" Focusable="False" Grid.Column="1" Style="{DynamicResource DarkButtonWithText}" Click="donSaveCardButton_Click" MouseEnter="donSaveCardButton_MouseEnter" MouseLeave="donSaveCardButton_MouseLeave" Margin="10">
             <Image  x:Name="dontSaveButtonImage"/>
         </Button>
-        <Button x:Name="chooseQuestionImage" Focusable="False" Grid.Column="0" Grid.Row="1" Margin="10" Content="Изображение-вопрос" Click="chooseQuestionImage_Click" Style="{DynamicResource DarkButtonWithText}"/>
-        <Button x:Name="chooseAnswerImage" Focusable="False" Grid.Column="1" Grid.Row="1" Margin="10" Content="Изображение-ответ" Click="chooseAnswerImage_Click" Style="{DynamicResource DarkButtonWithText}"/>
+        <Button x:Name="chooseQuestionImage" Focusable="False" Grid.Column="0" Grid.Row="1" Margin="10" Content="Question image" Click="chooseQuestionImage_Click" Style="{DynamicResource DarkButtonWithText}"/>
+        <Button x:Name="chooseAnswerImage" Focusable="False" Grid.Column="1" Grid.Row="1" Margin="10" Content="Answer image" Click="chooseAnswerImage_Click" Style="{DynamicResource DarkButtonWithText}"/>
 
         <Image x:Name="questionImage" Focusable="False" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Width="Auto" Source="{Binding QuestionImage}"/>
         <Image x:Name="answerImage" Focusable="False" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Width="Auto" Source="{Binding AnswerImage}" Visibility="{Binding AnswerIsVisible, Converter={StaticResource visibilityConverter}}"/>
 
-        <TextBox x:Name="questionTextBox" Grid.ColumnSpan="2" AcceptsReturn="True" Grid.Column="0" Grid.Row="3" Text="{Binding Question,Mode=TwoWay}" Style="{DynamicResource TextBoxStyle1}" MouseDown="questionTextBox_MouseDown" PreviewMouseDown="questionTextBox_PreviewMouseDown"/>
-        <TextBox x:Name="answerTextBox" Grid.ColumnSpan="2" AcceptsReturn="True" Grid.Column="0" Grid.Row="4" Text="{Binding Answer, Mode=TwoWay}" Style="{DynamicResource TextBoxStyle1}" Visibility="{Binding AnswerIsVisible, Converter={StaticResource visibilityConverter}}" MouseDown="answerTextBox_MouseDown" PreviewMouseDown="answerTextBox_PreviewMouseDown"/>
+        <TextBox x:Name="questionTextBox" Grid.ColumnSpan="2" FontSize ="14" FontFamily="Calibri" AcceptsReturn="True" Grid.Column="0" Grid.Row="3" Text="{Binding Question,Mode=TwoWay}" Style="{DynamicResource TextBoxStyle1}" MouseDown="questionTextBox_MouseDown" PreviewMouseDown="questionTextBox_PreviewMouseDown" SizeChanged="questionTextBox_SizeChanged"/>
+        <TextBox x:Name="answerTextBox" Grid.ColumnSpan="2" FontSize =" 14" FontFamily="Calibri" AcceptsReturn="True" Grid.Column="0" Grid.Row="4" Text="{Binding Answer, Mode=TwoWay}" Style="{DynamicResource TextBoxStyle1}" Visibility="{Binding AnswerIsVisible, Converter={StaticResource visibilityConverter}}" MouseDown="answerTextBox_MouseDown" PreviewMouseDown="answerTextBox_PreviewMouseDown" SizeChanged="answerTextBox_SizeChanged"/>
     </Grid>
 </UserControl>

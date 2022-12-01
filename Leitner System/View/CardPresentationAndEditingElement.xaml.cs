@@ -178,6 +178,20 @@ namespace Leitner_System.View
         {
             dontSaveButtonImage.Source = dontSaveImageDark;
         }
+
+        private void questionTextBox_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            questionTextBox.FontSize = questionTextBox.ActualHeight / 4;
+            if (questionTextBox.FontSize < 18)
+                questionTextBox.FontSize = 18;
+        }
+
+        private void answerTextBox_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            answerTextBox.FontSize = answerTextBox.ActualHeight / 4;
+            if (answerTextBox.FontSize < 18)
+                answerTextBox.FontSize = 18;
+        }
     }
     class ChangePageBlockingEventArgs : EventArgs
     {

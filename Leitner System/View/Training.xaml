@@ -248,25 +248,35 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="correctAnswer" Focusable="False" Grid.Column="0" Grid.Row="3" Content="Верно" MaxWidth="200" Margin="60 15" Style="{DynamicResource GreenButton1}" Click="correctAnswer_Click" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}"/>
+        <Button x:Name="correctAnswer" Focusable="False" Grid.Column="0" Grid.Row="3" Content="Correct" MaxWidth="200" Margin="60 15" Style="{DynamicResource GreenButton1}" Click="correctAnswer_Click" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}"/>
         <!--<Button x:Name="showAnswerButton" Focusable="False" Grid.Column="1" Grid.Row="2" Content="Показать ответ" Click="showAnswerButton_Click" Style="{DynamicResource GreyButton}" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}"/>-->
         <!--<Button x:Name="earlyFinish" Focusable="False" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Content="Завершить" Style="{DynamicResource GreyButton}" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}" Click="earlyFinish_Click"/>-->
-        <Button x:Name="wrongAnswer" Focusable="False" Grid.Column="1" Grid.Row="3"  Content="Неверно" MaxWidth="200" Margin="60 15" Style="{DynamicResource RedButton1}" Click="wrongAnswer_Click" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}"/>
-        <Button x:Name="deleteCard" Focusable="False" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Margin="10" Style="{DynamicResource DarkButtonWithText}" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}" Click="deleteCard_Click">
-            <Image x:Name="deleteImage"/>
+        <Button x:Name="wrongAnswer" Focusable="False" Grid.Column="1" Grid.Row="3"  Content="Wrong" MaxWidth="200" Margin="60 15" Style="{DynamicResource RedButton1}" Click="wrongAnswer_Click" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}"/>
+        <Button x:Name="deleteCard" Focusable="False" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Margin="10" Style="{DynamicResource DarkButtonWithText}" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}" Click="deleteCard_Click" MouseEnter="deleteCard_MouseEnter" MouseLeave="deleteCard_MouseLeave">
+            <Image x:Name="deleteButtonImage"/>
         </Button>
         <TextBlock x:Name="resultLabel" Focusable="False" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Text="{Binding CardsAnswered}"/>
         <local:CardPresentationAndEditingElement Focusable="False" x:Name="cardPresentationAndEditingElement" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
-        <Button x:Name="showAnswerButton" Focusable="False" Grid.Column="1" Grid.Row="2" Content="Показать ответ" Click="showAnswerButton_Click" Style="{DynamicResource GreyButton}" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}"/>
-        <Button x:Name="earlyFinish" Focusable="False" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Content="Завершить" Style="{DynamicResource GreyButton}" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}" Click="earlyFinish_Click"/>
+        <Button x:Name="showAnswerButton" Focusable="False" Grid.Column="1" Grid.Row="2" Content="Show answer" Click="showAnswerButton_Click" Style="{DynamicResource GreyButton}" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}"/>
+        <Button x:Name="earlyFinish" Focusable="False" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Content="Complete" Style="{DynamicResource GreyButton}" IsEnabled="{Binding TrainingIsComleted, Converter={StaticResource notConverter}}" Click="earlyFinish_Click"/>
 
        
-        <StackPanel x:Name="resultPanel" Focusable="False" Width="400" Height="300" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.RowSpan="4" Background="Transparent" Visibility="{Binding TrainingIsComleted, Converter={StaticResource visibilityConverter}}">
+        <StackPanel x:Name="resultPanel" Focusable="False" MinWidth ="400" Height="300" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.RowSpan="4" Background="Transparent" Visibility="{Binding TrainingIsComleted, Converter={StaticResource visibilityConverter}}">
             <Border BorderBrush="#FF52504E" BorderThickness="2" CornerRadius="10">
                 <StackPanel Background="White">
-                    <TextBlock x:Name="correctResults" FontSize="20" FontFamily="Calibri" Text="{Binding CorrectAnswersCount}" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="wrongResults" FontSize="20" FontFamily="Calibri" Text="{Binding WrongAnswersCount}" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="procentage" FontSize="20" FontFamily="Calibri" Text="{Binding Procentage}" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="15 5">
+                        <TextBlock Text="Correct answers: " FontSize="20" FontFamily="Calibri"/>
+                        <TextBlock x:Name="correctResults" FontSize="20" FontFamily="Calibri" Text="{Binding CorrectAnswersCount}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="15 5">
+                        <TextBlock Text="Wrong answers: " FontSize="20" FontFamily="Calibri"/>
+                        <TextBlock x:Name="wrongResults" FontSize="20" FontFamily="Calibri" Text="{Binding WrongAnswersCount}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="15 5">
+                        <TextBlock Text="Procentage of correct answers: " FontSize="20" FontFamily="Calibri"/>
+                        <TextBlock x:Name="procentage" FontSize="20" FontFamily="Calibri" Text="{Binding Procentage}" HorizontalAlignment="Center"/>
+                    </StackPanel>
                     <ScrollViewer x:Name="changeAnswersScrollViewer" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="15" PreviewMouseWheel="changeAnswersScrollViewer_PreviewMouseWheel" MinHeight="100" Template="{DynamicResource ScrollViewerControlTemplate1}">
                         <!--<ScrollViewer x:Name="cardScrollViewer" Grid.Column="1" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="15" HorizontalScrollBarVisibility="Disabled">-->
                         <ListView  x:Name="changeAnswers" Style="{DynamicResource ListViewStyle1}" ItemContainerStyle="{DynamicResource ListViewItemStyle1}" MaxHeight="100" ItemsSource="{Binding Results}" Background="#FFD5D5D3" SelectionChanged="changeAnswers_SelectionChanged">
@@ -274,7 +284,7 @@
                                 <DataTemplate>
                                     <Grid Height="25">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*" MaxWidth="300"/>
                                             <ColumnDefinition Width="1*"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Text="{Binding Name}" HorizontalAlignment="Left" Grid.Column="0"/>
@@ -289,7 +299,7 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </ScrollViewer>
-                    <Button x:Name="toHomeButton" Style="{DynamicResource DarkButtonWithText}" Margin="10" MaxHeight="50" Content="Домой" Click="toHomeButton_Click"/>
+                    <Button x:Name="toHomeButton" Style="{DynamicResource DarkButtonWithText}" Margin="10" MaxHeight="50" Content="To home" Click="toHomeButton_Click"/>
 
                 </StackPanel>
             </Border>

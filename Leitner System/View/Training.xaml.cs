@@ -25,6 +25,8 @@ namespace Leitner_System.View
     {
         TrainingViewModel viewModel;
         //StartPage startPage;
+        private BitmapImage deleteImage;
+        private BitmapImage deleteImageDark;
         public Training()
         {
             InitializeComponent();
@@ -32,6 +34,9 @@ namespace Leitner_System.View
         public Training(TrainingViewModel vm)
         {
             InitializeComponent();
+            deleteImage = new BitmapImage(new Uri("..\\Assets\\DeleteSprite.png", UriKind.Relative));
+            deleteImageDark = new BitmapImage(new Uri("..\\Assets\\DeleteSpriteDark.png", UriKind.Relative));
+            deleteButtonImage.Source = deleteImageDark;
             this.Focus();
             viewModel = vm;
             trainingPage.DataContext = viewModel;
@@ -157,6 +162,16 @@ namespace Leitner_System.View
         private void changeAnswers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
+        }
+
+        private void deleteCard_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            deleteButtonImage.Source = deleteImage;
+        }
+
+        private void deleteCard_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            deleteButtonImage.Source = deleteImageDark;
         }
     }
 }

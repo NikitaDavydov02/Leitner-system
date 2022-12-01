@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Leitner_System" xmlns:viewmodel="clr-namespace:Leitner_System.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:LeitnerSystemViewModel}"
         mc:Ignorable="d"
-        Title="Система Лейтнера" Height="450" Width="800" x:Name="mainWindow" Closing="mainWindow_Closing" Loaded="mainWindow_Loaded" GotFocus="mainWindow_GotFocus">
+        Title="Leitner System" Height="450" Width="800" x:Name="mainWindow" Closing="mainWindow_Closing" Loaded="mainWindow_Loaded" GotFocus="mainWindow_GotFocus">
 
 
     <Grid>

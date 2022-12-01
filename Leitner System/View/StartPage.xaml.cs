@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics; 
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,7 @@ namespace Leitner_System.View
         private BitmapImage exportImage;
         private BitmapImage importImage;
         private BitmapImage findImage;
+        private BitmapImage questionImage;
         //Light Images
         private BitmapImage deleteImageDark;
         private BitmapImage dontSaveImageDark;
@@ -50,6 +52,7 @@ namespace Leitner_System.View
         private BitmapImage exportImageDark;
         private BitmapImage importImageDark;
         private BitmapImage findImageDark;
+        private BitmapImage questionImageDark;
         public StartPage()
         {
             InitializeComponent();
@@ -68,6 +71,7 @@ namespace Leitner_System.View
             exportImage = new BitmapImage(new Uri("..\\Assets\\ExportSprite.png", UriKind.Relative));
             importImage = new BitmapImage(new Uri("..\\Assets\\ImportSprite.png", UriKind.Relative));
             findImage = new BitmapImage(new Uri("..\\Assets\\FindSprite.png", UriKind.Relative));
+            questionImage= new BitmapImage(new Uri("..\\Assets\\Question.png", UriKind.Relative));
             ////Dark images inicialization
             deleteImageDark = new BitmapImage(new Uri("..\\Assets\\DeleteSpriteDark.png", UriKind.Relative));
             dontSaveImageDark = new BitmapImage(new Uri("..\\Assets\\DontSaveSpriteDark.png", UriKind.Relative));
@@ -79,6 +83,7 @@ namespace Leitner_System.View
             exportImageDark = new BitmapImage(new Uri("..\\Assets\\ExportSpriteDark.png", UriKind.Relative));
             importImageDark = new BitmapImage(new Uri("..\\Assets\\ImportSpriteDark.png", UriKind.Relative));
             findImageDark = new BitmapImage(new Uri("..\\Assets\\FindSpriteDark.png", UriKind.Relative));
+            questionImageDark = new BitmapImage(new Uri("..\\Assets\\QuestionDark.png", UriKind.Relative));
             //ButtonsINicialization
             deleteDeckButtonImage.Source = deleteImage;
             chooseFolderButtonImage.Source = folderImage;
@@ -89,6 +94,7 @@ namespace Leitner_System.View
             importButtonImage.Source = importImageDark;
             exportButtonImage.Source = exportImageDark;
             findButtonImage.Source = findImageDark;
+            helpButtonImage.Source = questionImage;
         }
         private void CurrentCardChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -508,6 +514,21 @@ namespace Leitner_System.View
         private void findButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
             findButtonImage.Source = findImageDark;
+        }
+
+        private void helpButton_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("www.yandex.ru");
+        }
+
+        private void helpButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            helpButtonImage.Source = questionImage;
+        }
+
+        private void helpButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            helpButtonImage.Source = questionImageDark;
         }
     }
     public class TrainingStartEventArgs:EventArgs

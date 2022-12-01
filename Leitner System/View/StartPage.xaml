@@ -40,9 +40,18 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="0" Background="#FF52504E" Grid.RowSpan="5" Width="Auto"/>
         <Grid Grid.Row="0" Grid.Column="0">
-            <Button x:Name="settingsButton" HorizontalAlignment="Left" Margin="10" MaxWidth="50" Grid.Column="0" Style="{DynamicResource WhiteButtonWithText}" Width="Auto" Height="Auto" Click="settingsButton_Click" MouseEnter="settingsButton_MouseEnter" MouseLeave="settingsButton_MouseLeave">
-                <Image x:Name="settingsButtonImage"/>
-            </Button>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="settingsButton" HorizontalAlignment="Left" Margin="10" MaxWidth="50" Grid.Column="0" Style="{DynamicResource WhiteButtonWithText}" Width="Auto" Height="Auto" Click="settingsButton_Click" MouseEnter="settingsButton_MouseEnter" MouseLeave="settingsButton_MouseLeave">
+                    <Image x:Name="settingsButtonImage"/>
+                </Button>
+                
+                <Button x:Name="helpButton" HorizontalAlignment="Left" Margin="10" MaxWidth="50" Grid.Column="0" Style="{DynamicResource WhiteButtonWithText}" Width="Auto" Height="Auto" Click="helpButton_Click" MouseLeave="helpButton_MouseLeave" MouseEnter="helpButton_MouseEnter">
+                    <Hyperlink>
+                        <Image x:Name="helpButtonImage"/>
+                    </Hyperlink>
+                </Button>
+            </StackPanel>
+            
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch">
             <!--<Grid.ColumnDefinitions>
@@ -54,12 +63,12 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="SelectAll" Margin="15 2" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Content="Выбрать все" Click="SelectAll_Click" Style="{DynamicResource WhiteButtonWithText}" IsEnabled="{Binding Decks.Count, Converter={StaticResource integerToVisibilityConverter}}"/>
+            <Button x:Name="SelectAll" Margin="15 2" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Content="Choose all" Click="SelectAll_Click" Style="{DynamicResource WhiteButtonWithText}" IsEnabled="{Binding Decks.Count, Converter={StaticResource integerToVisibilityConverter}}"/>
             <ComboBox x:Name="ReverseSetting" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" Margin="15 2" Style="{DynamicResource ComboBoxStyle1}" SelectionChanged="ReverseSetting_SelectionChanged" SelectedIndex="0" Grid.ColumnSpan="2">
-                <ComboBoxItem Content="Прямо" FontSize="8" Style="{DynamicResource ComboBoxItemStyle1}"/>
-                <ComboBoxItem Content="Обратно" Style="{DynamicResource ComboBoxItemStyle1}"/>
-                <ComboBoxItem Content="Случайно" FontSize="8"  Style="{DynamicResource ComboBoxItemStyle1}"/>
-                <ComboBoxItem Content="Пользовательский" FontSize="8"  Style="{DynamicResource ComboBoxItemStyle1}"/>
+                <ComboBoxItem Content="Straight" FontSize="8" Style="{DynamicResource ComboBoxItemStyle1}"/>
+                <ComboBoxItem Content="Reverse" Style="{DynamicResource ComboBoxItemStyle1}"/>
+                <ComboBoxItem Content="Random" FontSize="8"  Style="{DynamicResource ComboBoxItemStyle1}"/>
+                <ComboBoxItem Content="Manual" FontSize="8"  Style="{DynamicResource ComboBoxItemStyle1}"/>
             </ComboBox>
         </Grid>
         <ScrollViewer x:Name="deckScrollViewer" Grid.Column="0" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="15" LostFocus="deckScrollViewer_LostFocus" GotFocus="deckScrollViewer_GotFocus" PreviewMouseWheel="deckScrollViewer_PreviewMouseWheel" Foreground="Black" Template="{DynamicResource ScrollViewerControlTemplate1}">
@@ -88,11 +97,11 @@
 
                             <TextBlock Text="{Binding DeckName}" Grid.Row="0" Grid.Column="1" Margin="10 0"/>
                             <TextBlock Text="{Binding Count}" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Margin="10 0"/>
-                            <ComboBox x:Name="ReverseSetting" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="3" Margin="15 2" Style="{DynamicResource ComboBoxStyle1}" SelectionChanged="ReverseSetting_SelectionChanged" SelectedIndex="0" Grid.ColumnSpan="2">
-                                <ComboBoxItem Content="Прямо" FontSize="8" Style="{DynamicResource ComboBoxItemStyle1}"/>
-                                <ComboBoxItem Content="Обратно" Style="{DynamicResource ComboBoxItemStyle1}"/>
-                                <ComboBoxItem Content="Случайно" FontSize="8"  Style="{DynamicResource ComboBoxItemStyle1}"/>
-                                <ComboBoxItem Content="Пользовательский" FontSize="8"  Style="{DynamicResource ComboBoxItemStyle1}"/>
+                            <ComboBox x:Name="ReverseSetting" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="3" Margin="15 2" Style="{DynamicResource ComboBoxStyle1}" SelectionChanged="ReverseSetting_SelectionChanged" SelectedIndex="{Binding ReverseSetting}" IsEnabled="{Binding  ReverseSettingChangingEnable}" Grid.ColumnSpan="2">
+                                <ComboBoxItem Content="Straight" FontSize="8" Style="{DynamicResource ComboBoxItemStyle1}"/>
+                                <ComboBoxItem Content="Reverse" Style="{DynamicResource ComboBoxItemStyle1}"/>
+                                <ComboBoxItem Content="Random" FontSize="8"  Style="{DynamicResource ComboBoxItemStyle1}"/>
+                                <ComboBoxItem Content="Manual" FontSize="8"  Style="{DynamicResource ComboBoxItemStyle1}"/>
                             </ComboBox>
                         </Grid>
                     </DataTemplate>
@@ -131,7 +140,7 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <TextBox x:Name="deckName" Grid.Column="0" Text="{Binding CurrentDeck.DeckName, Mode=TwoWay}" Style="{DynamicResource TextBoxStyle1}"/>
-            <Button x:Name="deckSaveButton" Grid.Column="1" Margin="10" Content="Переименовать" Click="deckSaveButton_Click" Style="{DynamicResource DarkButtonWithText}"/>
+            <Button x:Name="deckSaveButton" Grid.Column="1" Margin="10" Content="Rename" Click="deckSaveButton_Click" Style="{DynamicResource DarkButtonWithText}"/>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>

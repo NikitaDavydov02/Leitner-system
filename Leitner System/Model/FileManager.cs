@@ -11,6 +11,7 @@ using System.Runtime.Serialization;
 using Excel=Microsoft.Office.Interop.Excel;
 
 
+
 namespace Leitner_System.Model
 {
     static class FileManager
@@ -31,6 +32,10 @@ namespace Leitner_System.Model
         ///5. Set parent deck for each card in loaded decks
         ///</summary>
         ///<param name="pathOfFolderWithDecks">Absolute path of folder that contains decks (if it is empty, so reading from default folder)</param>
+        //public async static Task<Deck> ReadDeckFromDeckFolderWithFullPathAsync(string absolutePathOfFolderWithDecks)
+        //{
+        //   return await Task.Run(() => ReadDeckFromDeckFolderWithFullPath(absolutePathOfFolderWithDecks));
+        //}
         public static List<Deck> GetDecksFromFolder(string absolutePathOfFolderWithDecks = "")
         {
             if (String.IsNullOrEmpty(absolutePathOfFolderWithDecks))
@@ -40,7 +45,7 @@ namespace Leitner_System.Model
             List<Deck> output = new List<Deck>();
             if (!Directory.Exists(absolutePathOfFolderWithDecks))
             {
-                MessageBox.Show("Указанная папка с колодами не найдена");
+                MessageBox.Show("Folder " +absolutePathOfFolderWithDecks +" was not found.");
                 return null;
             }
             currentFolderWithDecksFullPath = absolutePathOfFolderWithDecks;
@@ -51,7 +56,7 @@ namespace Leitner_System.Model
                 if (deck != null)
                     output.Add(deck);
                 else
-                    MessageBox.Show("Не удалось прочитать колоду из файла " + deckDirectoryName);
+                    MessageBox.Show("Reading of deck from " + deckDirectoryName + "was not sucssesful.");
             }
             foreach(Deck deck in output)
                 deck.SetParentDeckToCards();
@@ -91,7 +96,7 @@ namespace Leitner_System.Model
             }
             catch
             {
-                MessageBox.Show("Не удалось выгрузить настройки.");
+                MessageBox.Show("Settings was not found in " + path);
             }
         }
         public static void SaveSettings()
@@ -111,7 +116,7 @@ namespace Leitner_System.Model
             }
             catch
             {
-                MessageBox.Show("Не удалось сохранить настройки");
+                MessageBox.Show("Settings was not saved");
             }
         }
         ///<summary>
@@ -132,7 +137,7 @@ namespace Leitner_System.Model
             }
             if (String.IsNullOrEmpty(deckFileFullPath))
             {
-                MessageBox.Show("В папке " + absolutePathOfFolderWithDecks + "не удалось найти колоду.");
+                MessageBox.Show("There is no this deck in folder " + absolutePathOfFolderWithDecks);
                 return null;
             }
             try
@@ -145,18 +150,22 @@ namespace Leitner_System.Model
                         readingDeck = deck as Deck;
                     else
                     {
-                        MessageBox.Show("Не удалось прочитать колоду из файла: " + deckFileFullPath);
+                        MessageBox.Show("Error while reading from: " + deckFileFullPath);
                         return null;
                     }
                 }
             }
             catch
             {
-                MessageBox.Show("Не удалось прочитать колоду из файла: " + deckFileFullPath);
+                MessageBox.Show("Error while reading from: " + deckFileFullPath);
                 return null;
             }
             return readingDeck;
         }
+        //public static async Task ExportExcelFileAsync(string absoluteFilePath, Dictionary<string, string> input)
+        //{
+        //    await Task.Run(() => ExportExcelFile(absoluteFilePath, input));
+        //}
         public static void ExportExcelFile(string absoluteFilePath, Dictionary<string,string> input)
         {
             if (String.IsNullOrEmpty(absoluteFilePath))
@@ -193,10 +202,14 @@ namespace Leitner_System.Model
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Не удалось экспортировать файл " + absoluteFilePath + "\n" + "\n" + ex.Message + "\n" + "\n" + "Проверьте файловую систему");
+                MessageBox.Show("Export was not susessfull " + absoluteFilePath + "\n" + "\n" + ex.Message + "\n");
 
             }
         }
+        //public static async Task<Dictionary<string, string>> ImportExcelFileAsync(string absoluteFilePath)
+        //{
+        //    return await Task.Run(() => ImportExcelFile(absoluteFilePath));
+        //}
         public static Dictionary<string, string> ImportExcelFile(string absoluteFilePath)
         {
             if (String.IsNullOrEmpty(absoluteFilePath))
@@ -211,7 +224,7 @@ namespace Leitner_System.Model
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Не удалось импортировать файл " + absoluteFilePath + "\n" + "\n" + ex.Message + "\n" + "\n" + "Проверьте файловую систему");
+                MessageBox.Show("Import was not susessfull  " + absoluteFilePath + "\n" + "\n" + ex.Message + "\n");
                 return null;
             }
             if (workbook == null)
@@ -240,7 +253,7 @@ namespace Leitner_System.Model
         /// </summary>
         /// <param name="prefix">prefix of new name for deck</param>
         /// <returns></returns>
-        public static string FindNameForNewDeckFolderInCurrentFolderWithDecks(string prefix="Новая колода")
+        public static string FindNameForNewDeckFolderInCurrentFolderWithDecks(string prefix="New deck")
         {
             if (!Directory.Exists(currentFolderWithDecksFullPath))
                 return "";
@@ -253,6 +266,10 @@ namespace Leitner_System.Model
             }
             return (prefix + " " + i.ToString());
         }
+        //public static async Task<bool> SaveDeckOrUpdateDeckFileAsync(Deck deck, string absolutePathOfFolderWithDecks = "")
+        //{
+        //    return await Task.Run(() => SaveDeckOrUpdateDeckFile(deck, absolutePathOfFolderWithDecks));
+        //}
         ///<summary>
         ///If deck folder doesn't exist create new one, if it already exists presaved file, then remove old deck file from folder, after that rename new deck file in this folder by the name of old file. 
         ///Return true if the process was sucessful and false in oposite case.
@@ -287,7 +304,7 @@ namespace Leitner_System.Model
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Не удалось записать файл " + fullDeckFilePath + "\n" + "\n" + ex.Message + "\n" + "\n" + "Проверьте файловую систему");
+                MessageBox.Show("Saving was not sucsessfull " + fullDeckFilePath + "\n" + "\n" + ex.Message + "\n");
                 return false;
             }
             return true;
@@ -329,17 +346,17 @@ namespace Leitner_System.Model
         {
             if (String.IsNullOrEmpty(newName))
             {
-                MessageBox.Show("Колоду нельзя оставить без названия");
+                MessageBox.Show("Deck must have name");
                 return false;
             }
             if (!Directory.Exists(currentFolderWithDecksFullPath))
             {
-                MessageBox.Show("Не выбрана папка с колодами");
+                MessageBox.Show("Folder is not choosen");
                 return false;
             }
             if (newName.Contains(".") || newName.Contains(",") || newName.Contains(":") || newName.Contains(";") || newName.Contains("?") || newName.Contains("=") || newName.Contains("+") || newName.Contains("*") || newName.Contains("\\") || newName.Contains("/") || newName.Contains("|") || newName.Contains("<") || newName.Contains(">"))
             {
-                MessageBox.Show("Недопустимое имя файла");
+                MessageBox.Show("Forbiden file name");
                 return false;
             }
             if (newName == deckNameToRename)
@@ -348,12 +365,12 @@ namespace Leitner_System.Model
             string deckNewFolderPath = Path.Combine(currentFolderWithDecksFullPath, newName);
             if (Directory.Exists(deckNewFolderPath))
             {
-                MessageBox.Show("Папка с требуемым именем уже существует");
+                MessageBox.Show("Folder with this name already exists");
                 return false;
             }
             if (!Directory.Exists(deckOldFolderPath))
             {
-                MessageBox.Show("Не удалось найти папку для переименования");
+                MessageBox.Show("There is no folder to rename");
                 return false;
             }
 
@@ -373,7 +390,7 @@ namespace Leitner_System.Model
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Не удалось записать файл " + oldDeckFileFullPath + "\n" + "\n" + ex.Message + "\n" + "\n" + "Проверьте файловую систему");
+                MessageBox.Show("File was not saved " + oldDeckFileFullPath + "\n" + "\n" + ex.Message + "\n");
                 return false;
             }
             return true;
@@ -386,7 +403,7 @@ namespace Leitner_System.Model
         {
             if (!Directory.Exists(Path.Combine(currentFolderWithDecksFullPath, deckToDeleteName)))
                 return;
-            MessageBoxResult result = MessageBox.Show("Вы действительно хотите удалить колоду?", "", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Do you want to delete this deck?", "", MessageBoxButton.YesNo);
             if (result != MessageBoxResult.Yes)
                 return;
             string[] files = Directory.GetFiles(Path.Combine(currentFolderWithDecksFullPath, deckToDeleteName));

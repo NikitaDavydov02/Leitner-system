@@ -14,7 +14,7 @@ namespace Leitner_System.Model
     /// Keep answer, question, supportive and visual information about card
     /// </summary>
     [DataContract]
-    public class Card:ICloneable
+    public class Card
     {
         //--------------------------------------------------------------------------------
         //------------------------------------- DATA MEMBERS ---------------------------------
@@ -35,7 +35,7 @@ namespace Leitner_System.Model
         public DateTime LastReverseRepetitionTime { get; private set; }
         [DataMember]
         public RepitionFrequensy ReverseRepitionFrequensy { get; private set; }
-        public Deck parentDeck { get; private set; }
+        public Deck parentDeck { get; set; }
         //--------------------------------------------------------------------------------
         //------------------------------------- METHODS ---------------------------------
         //--------------------------------------------------------------------------------
@@ -63,10 +63,10 @@ namespace Leitner_System.Model
         /// Set parent deck property of this card
         /// </summary>
         /// <param name="deck"></param>
-        public void SetPerentDeck(Deck deck)
-        {
-            this.parentDeck = deck;
-        }
+        //public void SetPerentDeck(Deck deck)
+        //{
+        //    this.parentDeck = deck;
+        //}
         /// <summary>
         /// Save new values of fileds of this card, copy images from its initial locations to deck folder
         /// </summary>
@@ -83,7 +83,7 @@ namespace Leitner_System.Model
             Answer = answer;
             RelativeToDeckFolderQuestionImagePath = relativeToDeckFolderQuestionImagePath;
             RelativeToDeckFolderAnswerImagePath = relativeToDeckFolderAnswerImagePath;
-            FileManager.SaveDeckOrUpdateDeckFile(parentDeck);
+            FileManager.SaveDeckOrUpdateDeckFile(parentDeck);//dsdvs
         }
         ///<summary>
         ///Update last repitition time by answer 
@@ -164,21 +164,6 @@ namespace Leitner_System.Model
                 return true;
             return false;
         }
-
-        public object Clone()
-        {
-            return MemberwiseClone();
-        }
-
-        //public int CompareTo(Card other)
-        //{
-        //    if (DaysSinceCardSholdHaveBeenRepeated > other.DaysSinceCardSholdHaveBeenRepeated)
-        //        return 1;
-        //    else if (this.Size < duckToCompare.Size)
-        //        return -1;
-        //    else
-        //        return 0;
-        //}
     }
     /// <summary>
     /// Repitition intervals

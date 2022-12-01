@@ -46,7 +46,7 @@ namespace Leitner_System.Model
         public void SetParentDeckToCards()
         {
             foreach (Card card in Cards)
-                card.SetPerentDeck(this);
+                card.parentDeck=this;
         }
         /// <summary>
         /// Change name of this deck
@@ -64,7 +64,7 @@ namespace Leitner_System.Model
         /// </summary>
         public Card CreateNewCard()
         {
-            Card newCard = new Card(this, "Question?", "Answer");
+            Card newCard = new Card(this, "New card", "");
             Cards.Add(newCard);
             FileManager.SaveDeckOrUpdateDeckFile(this);
             return newCard;
@@ -86,14 +86,5 @@ namespace Leitner_System.Model
             }
             FileManager.SaveDeckOrUpdateDeckFile(this);
         }
-        //public void DeleteSelectedCards(List<Card> CardsToDelete)
-        //{
-        //    foreach (Card card in CardsToDelete)
-        //    {
-        //        int removingIndex = Cards.IndexOf(card);
-        //        Cards.RemoveAt(removingIndex);
-        //    }
-        //    FileManager.SaveDeckOrUpdateDeckFile(this);
-        //}
     }
 }
